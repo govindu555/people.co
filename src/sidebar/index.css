@@ -1,0 +1,33 @@
+aside{
+    height: 85vh;
+    width: 250px;
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+    box-shadow: 2px 2px 2px lightgray;
+}
+.firstlink{
+    margin-bottom: 30px;
+    margin-top: 30px;
+    text-decoration: none;
+    font-size: 22px;
+    color: black;
+    font-family:'Franklin Gothic';
+}
+.secondlink{
+    text-decoration: none;
+    font-size: 22px;
+    color: black;
+    font-family:'Franklin Gothic';
+}
+a:hover{
+    background-color: lightgray;
+    color: blue;
+}
+a:active{
+    color: aqua;
+}
+.sideicon{
+    background-color: blue;
+    color: white;
+}
