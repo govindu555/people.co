@@ -2,7 +2,7 @@
     display: flex;
 }
 .form2{
-    background-color: lightgray;
+    background-color: rgb(251, 251, 251);
     margin: 20px;
     width: 80vh;
     height: 70vh;
@@ -40,6 +40,8 @@
     width: 200px;
     height: 30px;
     text-align: center;
+    border-radius: 20px;
+    border-width: 0px;
 }
 .formbutton{
     display: flex;
@@ -49,7 +51,8 @@
 .button2{
     width: 100px;
     height: 40px;
-    background-color: green;
+    background-color: rgb(126, 126, 232);
     font-size: 18px;
     border-radius: 20px;
+    color: white;
 }

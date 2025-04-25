@@ -2,7 +2,7 @@
     display: flex;
 }
 .userdetails{
-    background-color: lightgray;
+    background-color: rgb(243, 240, 240);
     width: 70vh;
     height: 50vh;
     text-align: center;

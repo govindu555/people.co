@@ -1,14 +1,17 @@
 import SideBar from "../sidebar";
 import { useParams,useNavigate } from "react-router-dom";
-import { contextdata } from "../context";
-import { useContext } from "react";
 import './index.css'
+import { useSelector } from "react-redux";
 
 const UserDetails=()=>{
     const pa=useParams()
     const user=pa.name
     const nav=useNavigate()
-    const [userdata]=useContext(contextdata)
+    
+    const userdata=useSelector(state=>{
+        return state.user
+    })
+
     const result=userdata.find(i=>i.name==user)
 
     function back(){

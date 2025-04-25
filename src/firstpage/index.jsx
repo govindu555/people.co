@@ -5,7 +5,7 @@ const FirstPage=()=>{
     return(
         <div className='one'>
             <SideBar/>
-            <h1 className='firsttext'>Welcome, Jane Doe!</h1>
+            <h1 className='firsttext'>Welcome, Every One!</h1>
         </div>
     )
 }

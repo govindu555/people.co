@@ -2,22 +2,31 @@ import SideBar from "../sidebar";
 import { BsSearchHeart } from "react-icons/bs";
 import { BsFillTrash3Fill } from "react-icons/bs";
 import { useNavigate ,NavLink} from "react-router-dom";
-import { useContext } from "react";
-import { contextdata } from "../context";
 import './index.css'
+import { useSelector,useDispatch } from "react-redux";
+import { removepeople } from "../redux";
 
 
 const SecondPage=()=>{
      const nav=useNavigate()
-     const [userdata,setUserdata]=useContext(contextdata)
+
+     const userdata=useSelector(state=>{
+        return state.user
+     })
+
+     const dispath=useDispatch()
 
      function addmember(){
               nav('/form')
      }
      
      function remove(item){
-            setUserdata(userdata.filter(i=>i.name!=item.name))
+        let conform=window.confirm("Do You Want to delete...")
+         if(conform==true){
+            dispath(removepeople(item))
+         }
      }
+
     
     return(
         <div className="two">
@@ -40,7 +49,7 @@ const SecondPage=()=>{
                        <NavLink to={`/user/${item.name}`}><h1>{item.name}</h1></NavLink>
                         <h1>{item.role}</h1>
                         <h1>{item.email}</h1>
-                        <button type="button" className="delect" onClick={()=>remove(item)}><BsFillTrash3Fill className="delecticon"/></button>
+                        <button type="button" className="delect" onClick={()=>remove(item.name)}><BsFillTrash3Fill className="delecticon"/></button>
                     </div><hr/></>))}
                 </div>
             </div>
