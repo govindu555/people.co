@@ -34,6 +34,7 @@ const SecondPage=()=>{
          if(conform==true){
           const data= await axios.delete("https://employeebackend-gznk.onrender.com/delete/"+id)
           setData(data.data)
+          setSearch(data.data)
          }
      }
 
