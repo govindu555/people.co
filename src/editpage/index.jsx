@@ -1,10 +1,13 @@
 
-import { useNavigate } from "react-router-dom";
-import { useState} from "react";
+import { useNavigate, useParams} from "react-router-dom";
+import {useState} from "react";
 import './index.css'
 import axios from "axios"
 
-const FormPage=()=>{
+const EditPage=()=>{
+    const pa=useParams()
+    const id=pa.id
+
    const nav=useNavigate()
 
    const [data,setData]=useState({
@@ -26,14 +29,14 @@ const FormPage=()=>{
    }
 
      async function back(){
-         await axios.post("https://employeebackend-gznk.onrender.com/employeedata",data)
+         await axios.put("https://employeebackend-gznk.onrender.com/edit/"+id,data)
          nav('/second')
      }
 
     return(
         <div className="form">
             <form className="form2" onSubmit={first}>
-                <h1 className="formhead">Enter Employee Details</h1>
+                <h1 className="formhead">Edit Employee Details</h1>
                 <div className="col">
                 <div className="formname">
                 <h1 className="user">Name : </h1>
@@ -56,10 +59,6 @@ const FormPage=()=>{
                 <input className="userinput" type="text" placeholder="Phone" name="phone" onChange={filedata} required/>
             </div>
             </div>
-            <div>
-                <input className="checkbox" id="id" type="checkbox" required/>
-                <label htmlFor="id" className="agree"> Are you Agree</label>
-            </div>
             <div className="formbutton">
                 <input className="button2" type="Submit"/>
             </div>
@@ -67,4 +66,4 @@ const FormPage=()=>{
         </div>
     )
 }
-export default FormPage;
+export default EditPage;

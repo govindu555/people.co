@@ -1,57 +1,88 @@
-import SideBar from "../sidebar";
+
 import { BsSearchHeart } from "react-icons/bs";
 import { BsFillTrash3Fill } from "react-icons/bs";
 import { useNavigate ,NavLink} from "react-router-dom";
 import './index.css'
-import { useSelector,useDispatch } from "react-redux";
-import { removepeople } from "../redux";
+import { useEffect, useState } from "react";
+import axios from "axios";
+import {RingLoader} from "react-spinners"
+import { BsPencilSquare } from "react-icons/bs";
 
 
 const SecondPage=()=>{
      const nav=useNavigate()
+     const [count,setCount]=useState(1)
+     const [data,setData]=useState([])
+     const [search,setSearch]=useState("")
 
-     const userdata=useSelector(state=>{
-        return state.user
-     })
+      useEffect(()=>{
+        gets()
+     },[])
 
-     const dispath=useDispatch()
+     async function gets(){
+        const d= await axios.get("https://employeebackend-gznk.onrender.com/getdata")
+        setData(d.data)
+        setSearch(d.data)
+     }
 
      function addmember(){
               nav('/form')
      }
      
-     function remove(item){
+     async function remove(id){
         let conform=window.confirm("Do You Want to delete...")
          if(conform==true){
-            dispath(removepeople(item))
+          const data= await axios.delete("https://employeebackend-gznk.onrender.com/delete/"+id)
+          setData(data.data)
          }
      }
 
+     function edit(id){
+        nav(`/edit/${id}`)
+     }
+
+     function searchfun(e){
+        if(e.target.value!=""){
+             const d=search.filter(i=>i.name.includes(e.target.value) || i.role.includes(e.target.value) || i.email.includes(e.target.value))
+            setData(d)
+           
+        }
+        else{
+          setData(search)
+        }
+     }
     
     return(
         <div className="two">
-        <SideBar/>
         <div>
             <div className="secondbar">
-                <h1 className="secondhead">Team members <span>{userdata.length}</span></h1>
-                <div className="search2"><input className="search" type="search" placeholder="Search"/><BsSearchHeart className="searchicon"/></div>
+                <h1 className="secondhead">Team members <span>{data.length}</span></h1>
+                <div className="search2"><input className="search" type="search" placeholder="Search, name,role,email" onChange={searchfun}/><BsSearchHeart className="searchicon"/></div>
                 <div className="add"><button className="addbutton" onClick={addmember}>+ ADD MEMBER</button></div>
             </div>
-            <div>
+            <div className="table">
                 <div className="tablehead">
+                    <h1 className="head">S.no</h1>
                     <h1 className="head">Name</h1>
                     <h1 className="head">Role</h1>
-                    <h1 className="head">Email address</h1>
-                </div>
-                <hr/>
-                <div>{ userdata.map(item=>(
-                    <><div className="tablecol">
-                       <NavLink to={`/user/${item.name}`}><h1>{item.name}</h1></NavLink>
-                        <h1>{item.role}</h1>
-                        <h1>{item.email}</h1>
-                        <button type="button" className="delect" onClick={()=>remove(item.name)}><BsFillTrash3Fill className="delecticon"/></button>
+                    <h1 className="head">Email</h1>
+                </div>{data.length?
+                <div className="table2">{ data.map((item,index)=>(
+                    <><div key={index} className="tablecol">
+                       <NavLink className="link" to={`/user/${item._id}`}>
+                       <h1 className="item">{index+count}</h1>
+                        <h1 className="item">{item.name}</h1>
+                        <h1 className="item">{item.role}</h1>
+                        <h1 className="item">{item.email}</h1>
+                        </NavLink>
+                        <BsPencilSquare className="edit" onClick={()=>edit(item._id)}/>
+                        <button type="button" className="delect" onClick={()=>remove(item._id)}><BsFillTrash3Fill className="delecticon"/></button>
                     </div><hr/></>))}
-                </div>
+                </div>:<div className="load"><RingLoader
+                          color="#ab20cf"
+                          size={60}
+                          speedMultiplier={1}
+                          /></div>}
             </div>
         </div>
         </div>

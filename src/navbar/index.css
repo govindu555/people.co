@@ -1,21 +1,25 @@
 .mainbar{
     height: 80px;
+    width: 100vw;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     margin: 10px;
     box-shadow: 2px 2px 2px lightgrey;
+    position: fixed;
 }
 .mainname{
     color: blue;
     font-family: 'Courier New', Courier, monospace;
-    font-size: 40px;
+    font-size: 30px;
 }
 .mainlogo{
     border-radius: 50px;
 }
 .logoname{
     font-size: 20px;
+    margin-right: 50px;
+    margin-left: 10px;
 }
 .mainbar2{
     display: flex;

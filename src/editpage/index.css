@@ -61,14 +61,9 @@
 
 .button2:hover{
     background-color: blue;
-    cursor: pointer;
 }
 
 .checkbox{
     margin-top: 30px;
     margin-left: 30px;
-}
-
-.agree:hover{
-   cursor: pointer;
 }

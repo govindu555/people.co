@@ -5,7 +5,7 @@ const SideBar=()=>{
     return(
         <aside>
         <NavLink to="/" className="firstlink"><BsGrid className='sideicon'/> Overview</NavLink>
-        <NavLink to="/second" className="secondlink"><BsGrid className='sideicon'/> People Directory</NavLink>
+        <NavLink to="/second" className="secondlink"><BsGrid className='sideicon'/> Employee Directory</NavLink>
         </aside>
     )
 }

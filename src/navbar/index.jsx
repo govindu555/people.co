@@ -4,10 +4,10 @@ const NavbarPage=()=>{
     return(
         <div>
         <nav className="mainbar">
-            <h1 className='mainname'>PEOPLES</h1>
+            <h1 className='mainname'>Employees</h1>
             <div className='mainbar2'>
-            <img className='mainlogo' width={50} height={50} src="https://static.vecteezy.com/system/resources/previews/014/108/416/non_2x/los-angeles-feb-6-john-doe-at-the-musicares-2015-person-of-the-year-gala-at-a-los-angeles-convention-center-on-february-6-2015-in-los-angeles-ca-free-photo.jpg"/>
-             <p className='logoname'>Jane Doe</p>
+            <img className='mainlogo' width={50} height={50} src="https://images.unsplash.com/photo-1631949136465-af801b6c5244?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8YnVkZGhhfGVufDB8fDB8fHww"/>
+             <p className='logoname'>Bhudham</p>
             </div>
             </nav>
         </div>
